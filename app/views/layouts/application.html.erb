@@ -6,11 +6,10 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="nixv">
 	<header>Notepad XIV</header>
-	<section id="main"><%= yield %></section>
+	<section id="main" ng-cloak class="cf"><%= yield %></section>
 	<footer>Pink Stars Are Falling In Lines</footer>
-	<script type="text/javascript" src="http://xivdb.com/tooltips.js"></script>
 	<script>var xivdb_tooltips = { "language": "EN" } </script>
 </body>
 </html>

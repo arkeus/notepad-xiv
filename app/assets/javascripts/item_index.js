@@ -33,7 +33,7 @@ var ItemIndex = new (function() {
 		}
 		var results = [];
 		$.each(bucket, function(index, item) {
-			if (item.n.toLowerCase().indexOf(name) !== -1) {
+			if (results.length < 10 && item.n.toLowerCase().indexOf(name) !== -1) {
 				results.push(item);
 			}
 		});

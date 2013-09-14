@@ -1,0 +1,30 @@
+// Clearfix
+@mixin clearfix {
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	
+	&:after {
+		clear: both;
+	}
+	
+	*zoom: 1;
+}
+
+// Helper class to include clearfix
+.cf {
+	@include clearfix;
+}
+
+$common: #EEE;
+$uncommon: #8FDD00;
+$rare: #1A9DFF;
+$epic: #CA68FF;
+$aetherial: #FF8AD7;
+
+.rarity-1 { color: $common; }
+.rarity-2 { color: $uncommon; }
+.rarity-3 { color: $rare; }
+.rarity-4 { color: $epic; }
+.rarity-7 { color: $aetherial; }

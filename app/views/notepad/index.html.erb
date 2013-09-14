@@ -1,9 +1,10 @@
-<section id="search">
-	<%= text_field_tag :search_name, nil, placeholder: "Item Search" %>
+<section id="search" ng-controller="SearchController">
+	<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
 	<hr>
-	<div id="search-results"></div>
+	<div id="search-results">
+		<div item-result ng-repeat="item in items">a</item-result>
+	</div>
 </section>
 
 <section id="content">
-	
 </section>
