@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notepadxiv</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>Notepad XIV</header>
+	<section id="main"><%= yield %></section>
+	<footer>Pink Stars Are Falling In Lines</footer>
+	<script type="text/javascript" src="http://xivdb.com/tooltips.js"></script>
+	<script>var xivdb_tooltips = { "language": "EN" } </script>
+</body>
+</html>

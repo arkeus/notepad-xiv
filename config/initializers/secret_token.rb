@@ -1,0 +1,2 @@
+# Fuck security, we don't need it here.
+Notepadxiv::Application.config.secret_key_base = 'e396ece17a62bcf7701ff937e4a97071ff839aa18d4c0476082c2f77a1907e3375947f7e197c00f178f96a459a6aa173a48b2264c21975ee5a16fcdd7c6341c6'
