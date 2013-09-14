@@ -1,0 +1,3 @@
+== Notepad XIV
+
+A notepad for keeping track of item prices in XIV, complete with quick item search and history keeping.
