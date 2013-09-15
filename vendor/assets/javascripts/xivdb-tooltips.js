@@ -16,6 +16,7 @@ function fPopLoadTips() {
         e.fn.simpletooltip = function () {
             return this.each(function () {
             	var activate = function (t) {
+            		var load = t.load;
                     e("#simpleTooltip").remove();
                     var n = e(this).data("tooltip"),
                         r = t.pageX + 5;
@@ -23,7 +24,15 @@ function fPopLoadTips() {
                     e("body").append("<div id='simpleTooltip' style='position: absolute; z-index: 9999; display: none;'>" + n + "</div>");
                     n = e("#simpleTooltip").width();
                     e("#simpleTooltip").width(n);
-                    e("#simpleTooltip").css("left", r).css("top", t).show();
+                    e("#simpleTooltip").css("left", r).css("top", t);
+            		if (load === true && currentHover != e(this).data("xivdb")) {
+            			return;
+            		}
+            		e("#simpleTooltip").show();
+               };
+               
+               var deactivate = function(t) {
+               		e("#simpleTooltip").remove();
                };
                
                var move = function (t) {
@@ -36,12 +45,9 @@ function fPopLoadTips() {
                     e("#simpleTooltip").css("left", n).css("top", r).show();
                };
                
-                void 0 != e(this).data("tooltip") && (e(this).hover(activate, function () {
-                    e("#simpleTooltip").remove();
-                }), e(this).mousemove(move));
+                void 0 != e(this).data("tooltip") && (e(this).hover(activate, deactivate), e(this).mousemove(move));
                 
-                activate.call(e(this), { pageX: cursorX, pageY: cursorY });
-                move.call(e(this), { pageX: cursorX, pageY: cursorY });
+                activate.call(e(this), { pageX: cursorX, pageY: cursorY, load: true });
             });
         };
     }(jQuery);
@@ -51,8 +57,10 @@ function fPopLoadTips() {
 function fPopLoadItem() {
     "undefined" != typeof Prototype && jQuery.noConflict();
     //jQuery(".tooltip").each(function () {
-    jQuery("body").on("mouseover", ".tooltip", function() {
+    jQuery("body").on("mouseover", ".tooltip", function(e) {
+    	e.stopPropagation();
         var e = jQuery(this).data("xivdb");
+        currentHover = e;
         if (jQuery(this).data("tooltip") !== undefined) {
         	return;
         }
@@ -93,6 +101,8 @@ function fPopLoadItem() {
                 }
             }));
         }
+    }).on("mouseover", function() {
+    	currentHover = null;
     });
 }
 
@@ -112,8 +122,10 @@ initXIVDBTooltips = function() {
 };
 document.addEventListener('DOMContentLoaded',function(){ initXIVDBTooltips(); });
 
-var cursorX;
-var cursorY;
+var cursorX = 0;
+var cursorY = 0;
+var currentHover = null;
+
 document.onmousemove = function(e) {
     cursorX = e.pageX;
     cursorY = e.pageY;
