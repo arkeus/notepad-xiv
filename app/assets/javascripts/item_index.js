@@ -6,7 +6,6 @@ var ItemIndex = new (function() {
 	// public 
 	
 	this.initialize = function(items) {
-		console.log("Initializing item map");
 		$.each(items, function(index, item) {
 			var words = item.n.split(" ");
 			$.each(words, function(word_index, word) {
@@ -21,7 +20,6 @@ var ItemIndex = new (function() {
 				map[key].push(item);
 			});
 		});
-		console.log("Item map initialized");
 	};
 	
 	this.search = function(string) {

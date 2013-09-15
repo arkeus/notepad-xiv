@@ -68,7 +68,7 @@ function fPopLoadItem() {
                 b = n[xivdb_tooltips.language];
             }
             var r = e[4];
-            void 0 == e[4] || !jQuery.isNumeric(e[4]) || "?item" != e[3] && "?skill" != e[3] && "?recipe" != e[3] || (console.log("XIVDB: Loading Item:"), console.log(e), jQuery.ajax({
+            void 0 == e[4] || !jQuery.isNumeric(e[4]) || "?item" != e[3] && "?skill" != e[3] && "?recipe" != e[3] || (jQuery.ajax({
                 url: "http://www.xivdb.com/modules/fpop/fpop.php",
                 data: {
                     id: r,
@@ -97,7 +97,7 @@ function fPopLoadItem() {
 }
 
 function fPopInit() {
-    console.log("Loading XIVDB Tooltips...");
+    //console.log("Loading XIVDB Tooltips...");
     "undefined" == typeof jQuery ? fPopGetScript("//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", fPopLoadTips) : fPopLoadTips();
 }
 initXIVDBTooltips = function() {
