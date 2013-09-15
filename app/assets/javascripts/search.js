@@ -1,4 +1,4 @@
-var SearchController = function($scope) {
+app.controller("SearchController", ["$scope", function($scope) {
 	$scope.search = null;
 	$scope.items = [];
 	
@@ -14,4 +14,4 @@ var SearchController = function($scope) {
 			$scope.search = string;
 		});
 	});
-};
+}]);
