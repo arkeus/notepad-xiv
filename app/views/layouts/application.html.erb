@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Notepadxiv</title>
+  <title>Notepad XIV - FFXIV Item Price Tracking</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="nixv">
-	<header>Notepad XIV</header>
+	<header><strong class="rarity-2">N</strong>otepad <strong class="rarity-3">X</strong><strong class="rarity-4">I</strong><strong class="rarity-7">V</strong></header>
 	<section id="main" ng-cloak class="cf"><%= yield %></section>
 	<footer>Pink Stars Are Falling In Lines</footer>
-	<script>var xivdb_tooltips = { "language": "EN" } </script>
+	<script>
+		var xivdb_tooltips = { "language": "EN" };
+		var initializationSearch = <%= (params[:search] || "").to_json.html_safe %>;
+	</script>
 </body>
 </html>
