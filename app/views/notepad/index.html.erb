@@ -36,7 +36,7 @@
 	<div class="title">Viewed</div>
 	<hr>
 	<div id="recent-results">
-		<div item-result ng-repeat="item in recent track by $index"></div>
+		<div recent-item ng-repeat="item in recent track by $index"></div>
 		<div ng-show="recent.length < 1" id="empty-recent-message">Your recently viewed items will show up here.</div>
 	</div>
 </section>

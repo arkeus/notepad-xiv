@@ -87,3 +87,19 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 		}
 	};
 }]);
+
+app.directive("recentItem", ["Notepad", function(Notepad) {
+	return {
+		restrict: "A",
+		controller: ["$scope", "$element", "$attrs", function($scope, $element, $attrs) {
+			
+		}],
+		template: "<div class='item-result tooltip' data-xivdb='http://xivdb.com/{{item.u}}'><div class='name rarity-{{item.r}}'><span class='price gil' ng-show='item.p'>{{item.p}}<em>G</em></span>{{item.n}}</div></div>",
+		replace: true,
+		link: function(scope, element, attrs) {
+			$(element).click(function() {
+				Notepad.selectItem(scope.item);
+			});
+		}
+	};
+}]);
