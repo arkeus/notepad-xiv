@@ -1,19 +1,42 @@
 <section id="search" ng-controller="SearchController">
-	<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
+	<div class="title">Search</div>
 	<hr>
 	<div id="search-results">
+		<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
 		<div item-result ng-repeat="item in items"></div>
 	</div>
 </section>
 
-<section id="content">
-	a
+<section id="content" ng-controller="NoteController">
+	<div ng-show="item == null" id="recent-notes">
+		<div class="title">Recently Added Prices</div>
+		<hr>
+		<div note ng-repeat="note in recentNotes"></div>
+	</div>
+	<div ng-show="item != null" id="item-notes">
+		<div id="item-notes-title">
+			<%= image_tag "hq.png" %>
+			<div class="price">
+				<span class="gil" ng-show="notes[0]">{{notes[0].price}}<em>g</em></span>
+			</div>
+			<span class="rarity-{{item.r}} name">{{item.n}}</span>
+		</div>
+		<hr>
+		<%= form_tag nil, id: "add-price-form" do %>
+			<%= text_field_tag "price", nil, placeholder: "Add Price", "ng-Pattern" => "/\d*/" %>
+		<% end %>
+		<div note ng-repeat="note in notes | orderBy:'id':'reverse' | limitTo:'18'"></div>
+	</div>
+	<div ng-show="item == null && recentNotes.length == 0" id="empty-notes-message">
+		You have no prices marked. Try searching on the left for an item and adding a price to it.
+	</div>
 </section>
 
 <section id="recent" ng-controller="RecentController">
-	<div class="title">Recent</div>
+	<div class="title">Viewed</div>
 	<hr>
 	<div id="recent-results">
-		<div item-result ng-repeat="item in recent"></div>
+		<div item-result ng-repeat="item in recent track by $index"></div>
+		<div ng-show="recent.length < 1" id="empty-recent-message">Your recently viewed items will show up here.</div>
 	</div>
 </section>

@@ -1,6 +1,12 @@
 Notepadxiv::Application.routes.draw do
-	root "notepad#index"
-	get "s/:search" => "notepad#index"
+	root "board#index"
+	post "/load" => "board#load", as: "board_load"
+	
+	get "/:board" => "notepad#index", as: "board_index"
+	post "/:board/add/:item" => "notepad#add"
+	post "/:board/remove" => "notepad#remove"
+	get "/:board/list/:item" => "notepad#list"
+	get "/:board/recent" => "notepad#recent"
 	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

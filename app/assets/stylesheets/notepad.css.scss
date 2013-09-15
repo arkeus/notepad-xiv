@@ -9,7 +9,8 @@ body {
 	overflow-y: scroll;
 	color: #bbb;
 	padding-bottom: 20px;
-	font-size: 14px;
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
 	
 	a, input[type="submit"], button[type="submit"] {
 		text-decoration: none;
@@ -21,14 +22,53 @@ body {
 }
 
 header {
-	font-family: 'Cinzel Decorative', cursive;
-	font-weight: bold;
 	background: #000;
 	border-bottom: 1px solid #555;
 	padding: 10px 8px 4px 12px;
-	text-shadow: -1px -1px 0 #ddd, 2px 2px 0 #000;
-	font-size: 28px;
-	line-height: 28px;
+	
+	#brand {
+		font-family: 'Cinzel Decorative', cursive;
+		font-weight: bold;
+		text-shadow: -1px -1px 0 #ddd, 2px 2px 0 #000;
+		font-size: 28px;
+		line-height: 28px;
+		cursor: pointer;
+		
+		&:hover {
+			text-shadow: -1px -1px 0 #ddd, 2px 2px 0 #000, 1px 1px 10px #fff;
+		}
+	}
+	
+	#board-form {
+		float: right;
+		text-align: right;
+		width: 50%;
+		position: relative;
+		top: -1px;
+		
+		input[type="text"] {
+			background: #222;
+			border: 1px solid #333;
+			padding: 4px;
+			color: #eee;
+			box-shadow: inset 1px 1px 0 #000;
+			margin-bottom: 8px;
+			width: 200px;
+			
+			&:focus {
+				outline: none;
+				box-shadow: inset 1px 1px 0 #000, 0 0 5px #777;
+			}
+		}
+		
+		input[type="submit"] {
+			background: #222;
+			border: 1px solid #333;
+			padding: 4px 12px;
+			color: #999;
+			box-shadow: inset 1px 1px 0 #444;
+		}
+	}
 }
 
 footer {
@@ -46,41 +86,71 @@ footer {
 #main {
 	padding: 8px;
 	
+	input[type="text"] {
+		background: #222;
+		border: 1px solid #444;
+		padding: 8px;
+		width: 100%;
+		color: #eee;
+		box-shadow: inset 1px 1px 0 #000;
+		margin-bottom: 8px;
+		
+		&:focus {
+			outline: none;
+			box-shadow: inset 1px 1px 0 #000, 0 0 5px #777;
+		}
+	}
+		
+	.title {
+		font-size: 24px;
+		font-weight: bold;
+		text-align: center;
+		font-family: 'Cinzel Decorative', cursive;
+		text-shadow: 0 0 5px #000;
+		color: #999;
+	}
+	
 	#search {
 		float: left;
 		width: 19.99%;
-		
-		input[type="text"] {
-			background: #222;
-			border: 1px solid #444;
-			padding: 8px;
-			width: 100%;
-			color: #eee;
-			box-shadow: inset 1px 1px 0 #000;
-			
-			&:focus {
-				outline: none;
-				box-shadow: inset 1px 1px 0 #000, 0 0 5px #777;
-			}
-		}
 	}
 	
 	#content {
 		float: left;
 		width: 59.99%;
-		padding-left: 8px;
+		padding: 0 24px;
+		
+		#recent-notes {
+			
+		}
+		
+		#item-notes {
+			#item-notes-title {
+				.price {
+					float: right;
+				}
+				
+				.name, .gil {
+					font-size: 24px;
+					font-family: 'Cinzel Decorative', cursive;
+					text-shadow: 0 0 5px #000;
+				}
+			}
+		}
+		
+		#empty-notes-message {
+			text-align: center;
+			color: #777;
+		}
 	}
 	
 	#recent {
 		float: left;
 		width: 19.99%;
 		
-		.title {
-			font-size: 24px;
-			font-weight: bold;
+		#empty-recent-message {
 			text-align: center;
-			font-family: 'Cinzel Decorative', cursive;
-			text-shadow: 0 0 5px #000;
+			color: #777;
 		}
 	}
 	
@@ -113,8 +183,13 @@ footer {
 	}
 	
 	.name {
-		font-size: 16px;
+		font-size: 14px;
 		font-weight: bold;
+		line-height: 20px;
+		
+		.price {
+			float: right;
+		}
 	}
 	
 	.info {
@@ -141,5 +216,67 @@ footer {
 		.type {
 			color: #999;
 		}
+	}
+}
+
+.note {
+	margin-bottom: 8px;
+	box-shadow: 0 0 5px #222;
+	padding: 6px;
+	border: 1px solid transparent;
+	transition: all 0.2s ease-out;
+	
+	&:hover {
+		box-shadow: 0 0 5px #000;
+		background: #2a2a2a;
+		border: {
+			top-color: #444;
+			left-color: #444;
+			right-color: #222;
+			bottom-color: #222;
+		}
+	}
+	
+	.name {
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: bold;
+		
+		.price {
+			float: right;
+		}
+	}
+	
+	.info {
+		color: #666;
+		
+		.link {
+			float: right;
+			color: #444;
+			
+			&:hover {
+				color: #aaa;
+			}
+		}
+		
+		.level {
+			color: #888;
+			
+			em {
+				font-style: normal;
+				color: #ddd;
+			}
+		}
+		
+		.type {
+			color: #999;
+		}
+	}
+}
+
+.gil {
+	em {
+		font-style: normal;
+		color: #999;
 	}
 }

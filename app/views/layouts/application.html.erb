@@ -2,17 +2,25 @@
 <html>
 <head>
   <title>Notepad XIV - FFXIV Item Price Tracking</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="nixv">
-	<header><strong class="rarity-2">N</strong>otepad <strong class="rarity-3">X</strong><strong class="rarity-4">I</strong><strong class="rarity-7">V</strong></header>
+	<header>
+		<div id="board-form">
+			<%= form_tag board_load_path, id: "board-load-form" do %>
+				<%= text_field_tag "board", @board.try(:name) %> <%= submit_tag "Load" %>
+			<% end %>
+		</div>
+		<span id="brand"><strong class="rarity-2">N</strong>otepad <strong class="rarity-3">X</strong><strong class="rarity-4">I</strong><strong class="rarity-7">V</strong></span>
+	</header>
 	<section id="main" ng-cloak class="cf"><%= yield %></section>
 	<footer>Pink Stars Are Falling In Lines</footer>
 	<script>
 		var xivdb_tooltips = { "language": "EN" };
-		var initializationSearch = <%= (params[:search] || "").to_json.html_safe %>;
+		var initializationSearch = <%= (params[:search] || "shield").to_json.html_safe %>;
+		var board = <%= params[:board] -%>;
 	</script>
 </body>
 </html>

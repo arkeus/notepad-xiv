@@ -7,6 +7,7 @@ var ItemIndex = new (function() {
 	
 	this.initialize = function(items) {
 		$.each(items, function(index, item) {
+			nameMap[item.n] = item;
 			var words = item.n.split(" ");
 			$.each(words, function(word_index, word) {
 				var normalized_word = word.toLowerCase();
@@ -31,11 +32,15 @@ var ItemIndex = new (function() {
 		}
 		var results = [];
 		$.each(bucket, function(index, item) {
-			if (results.length < 10 && item.n.toLowerCase().indexOf(name) !== -1) {
+			if (results.length < RESULTSET_SIZE && item.n.toLowerCase().indexOf(name) !== -1) {
 				results.push(item);
 			}
 		});
 		return results;
+	};
+	
+	this.get = function(name) {
+		return nameMap[name];
 	};
 	
 	this.test = function() { return map ; };
@@ -55,7 +60,9 @@ var ItemIndex = new (function() {
 	var KEYSIZE = 3;
 	var STOPWORDS = ["of"];
 	var STOPWORD_MAP = null;
+	var RESULTSET_SIZE = 13;
 	var map = {};
+	var nameMap = {};
 })();
 
 $(function() { ItemIndex.initialize(items); });
