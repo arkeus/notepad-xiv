@@ -42,5 +42,5 @@ app.controller("RecentController", ["$scope", function($scope) {
 		$scope.save();
 	});
 	
-	$scope.recent = $scope.load();
+	$scope.recent = $scope.load() || [];
 }]);
