@@ -2,9 +2,18 @@
 	<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
 	<hr>
 	<div id="search-results">
-		<div item-result ng-repeat="item in items">a</item-result>
+		<div item-result ng-repeat="item in items"></div>
 	</div>
 </section>
 
 <section id="content">
+	a
+</section>
+
+<section id="recent" ng-controller="RecentController">
+	<div class="title">Recent</div>
+	<hr>
+	<div id="recent-results">
+		<div item-result ng-repeat="item in recent"></div>
+	</div>
 </section>

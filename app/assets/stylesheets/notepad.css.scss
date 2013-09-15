@@ -48,7 +48,7 @@ footer {
 	
 	#search {
 		float: left;
-		width: 19.9%;
+		width: 19.99%;
 		
 		input[type="text"] {
 			background: #222;
@@ -63,20 +63,34 @@ footer {
 				box-shadow: inset 1px 1px 0 #000, 0 0 5px #777;
 			}
 		}
-		
-		hr {
-			border: 0;
-			height: 1px;
-	    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
-	    background-image:    -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
-	    background-image:     -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
-	    background-image:      -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
-		}
 	}
 	
 	#content {
 		float: left;
-		width: 79.9%;
+		width: 59.99%;
+		padding-left: 8px;
+	}
+	
+	#recent {
+		float: left;
+		width: 19.99%;
+		
+		.title {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			font-family: 'Cinzel Decorative', cursive;
+			text-shadow: 0 0 5px #000;
+		}
+	}
+	
+	hr {
+		border: 0;
+		height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:      -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
 	}
 }
 
@@ -85,6 +99,7 @@ footer {
 	box-shadow: 0 0 5px #222;
 	padding: 6px;
 	border: 1px solid transparent;
+	transition: all 0.2s ease-out;
 	
 	&:hover {
 		box-shadow: 0 0 5px #000;
