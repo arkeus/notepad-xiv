@@ -60,7 +60,7 @@ var ItemIndex = new (function() {
 	var KEYSIZE = 3;
 	var STOPWORDS = ["of"];
 	var STOPWORD_MAP = null;
-	var RESULTSET_SIZE = 12;
+	var RESULTSET_SIZE = 18;
 	var map = {};
 	var nameMap = {};
 })();

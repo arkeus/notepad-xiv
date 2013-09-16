@@ -41,7 +41,7 @@
 				<% end %>
 			</div>
 		</div>
-		<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: hq } | orderBy:'id':'reverse' | limitTo:'18'"></div>
+		<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: hq } | orderBy:'id':'reverse' | limitTo:'25'"></div>
 		<div ng-show="(notes | filter:{ hq: hq }).length == 0" id="empty-prices-message">
 			No prices have been entered for this item for <strong ng-show="hq">High Quality</strong><strong ng-show="!hq">Normal Quality</strong>.
 		</div>

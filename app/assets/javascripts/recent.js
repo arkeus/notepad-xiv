@@ -1,5 +1,5 @@
 app.controller("RecentController", ["$scope", function($scope) {
-	var RECENT_SIZE = 17;
+	var RECENT_SIZE = 26;
 	
 	$scope.recent = [];
 	

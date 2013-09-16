@@ -60,7 +60,7 @@ app.factory("Pricer", ["$rootScope", function($rootScope) {
 }]);
 
 app.factory("Favoriter", ["$rootScope", "Pricer", function($rootScope, Pricer) {
-	var LIMIT = 34;
+	var LIMIT = 52;
 	
 	var module = {};
 	module.favorites = [];

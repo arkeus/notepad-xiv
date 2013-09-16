@@ -33,7 +33,7 @@ header {
 	#brand {
 		font-family: 'Cinzel Decorative', cursive;
 		font-weight: bold;
-		text-shadow: -1px -1px 0 #ddd, 2px 2px 0 #000;
+		text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5), 2px 2px 0 #000;
 		font-size: 16px;
 		line-height: 16px;
 		cursor: pointer;
@@ -234,6 +234,10 @@ footer {
     background-image:     -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
     background-image:      -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
 	}
+}
+
+.item-result, .note, .recent-item, .favorite-item {
+	cursor: pointer;
 }
 
 .item-result {
