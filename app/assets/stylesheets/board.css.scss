@@ -2,3 +2,15 @@
 	text-align: center;
 	color: #999;
 }
+
+.error {
+	color: #f00;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: -1px -1px 0 #000;
+}
+
+.highlighted {
+	text-shadow: -1px -1px 0 #000;
+	color: #bbb;
+}

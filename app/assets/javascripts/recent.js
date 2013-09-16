@@ -1,14 +1,22 @@
 app.controller("RecentController", ["$scope", function($scope) {
-	var RECENT_SIZE = 14;
+	var RECENT_SIZE = 17;
 	
 	$scope.recent = [];
 	
 	$scope.save = function() {
-		localStorage.setObject("search.recent", $scope.recent);
+		localStorage.setObject("search.recent." + board, $scope.recent);
 	};
 	
 	$scope.load = function() {
-		return localStorage.getObject("search.recent");
+		var loaded = localStorage.getObject("search.recent." + board);
+		if (typeof loaded !== "undefined" && loaded != null && loaded.length > 0) {
+			for (var i = 0; i < loaded.length; i++) {
+				if (typeof loaded[i].n != "string") {
+					continue;
+				}
+				$scope.recent.push(loaded[i]);
+			}
+		}
 	};
 	
 	$scope.$on("select-item", function(message, item) {
@@ -32,15 +40,18 @@ app.controller("RecentController", ["$scope", function($scope) {
 		});
 	});
 	
-	$scope.$on("set-price", function(message, item, price) {
+	$scope.$on("set-price", function(message, item, price, hq) {
 		$.each($scope.recent, function(index, recent) {
-			console.log(recent.n, item.n, item);
 			if (recent.n == item.n) {
-				recent.p = price;
+				if (hq) {
+					recent.hqp = price;
+				} else {
+					recent.p = price;
+				}	
 			}
 		});
 		$scope.save();
 	});
 	
-	$scope.recent = $scope.load() || [];
+	$scope.load();
 }]);

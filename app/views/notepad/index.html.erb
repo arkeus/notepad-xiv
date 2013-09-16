@@ -2,7 +2,9 @@
 	<div class="title">Search</div>
 	<hr>
 	<div id="search-results">
-		<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
+		<%= form_tag nil, id: "search-form" do %>
+			<%= text_field_tag :search_name, nil, placeholder: "Item Search", "ng-model" => "search" %>
+		<% end %>
 		<div item-result ng-repeat="item in items"></div>
 	</div>
 </section>
@@ -15,17 +17,34 @@
 	</div>
 	<div ng-show="item != null" id="item-notes">
 		<div id="item-notes-title">
-			<%= image_tag "hq.png" %>
 			<div class="price">
-				<span class="gil" ng-show="notes[0]">{{notes[0].price}}<em>g</em></span>
+				<span class="gil" ng-show="hq && hqprice"><img src='assets/hq.png'>{{hqprice}}<em>g</em></span>
+				<span class="gil" ng-show="!hq && price">{{price}}<em>g</em></span>
 			</div>
 			<span class="rarity-{{item.r}} name">{{item.n}}</span>
 		</div>
 		<hr>
-		<%= form_tag nil, id: "add-price-form" do %>
-			<%= text_field_tag "price", nil, placeholder: "Add Price", "ng-Pattern" => "/\d*/" %>
-		<% end %>
-		<div note ng-repeat="note in notes | orderBy:'id':'reverse' | limitTo:'18'"></div>
+		<div class="actions">
+			<div class="left-actions">
+				<button id="quality-button" class="action-button" ng-click="toggleQuality()">
+					<span ng-show="hq"><%= image_tag "hq.png", id: "hq" %> High Quality</span>
+					<span ng-show="!hq">Normal Quality</span>
+				</button>
+				<button id="favorite-button" class="action-button" ng-click="toggleFavorite()">
+					<span ng-show="favorite">★ Favorite</span>
+					<span ng-show="!favorite">★ Not Favorite</span>
+				</button>
+			</div>
+			<div class="right-actions">
+				<%= form_tag nil, id: "add-price-form" do %>
+					<%= text_field_tag "price", nil, placeholder: "Add Price", "ng-Pattern" => "/\d*/" %>
+				<% end %>
+			</div>
+		</div>
+		<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: hq } | orderBy:'id':'reverse' | limitTo:'18'"></div>
+		<div ng-show="(notes | filter:{ hq: hq }).length == 0" id="empty-prices-message">
+			No prices have been entered for this item for <strong ng-show="hq">High Quality</strong><strong ng-show="!hq">Normal Quality</strong>.
+		</div>
 	</div>
 	<div ng-show="item == null && recentNotes.length == 0" id="empty-notes-message">
 		You have no prices marked. Try searching on the left for an item and adding a price to it.
@@ -38,5 +57,14 @@
 	<div id="recent-results">
 		<div recent-item ng-repeat="item in recent track by $index"></div>
 		<div ng-show="recent.length < 1" id="empty-recent-message">Your recently viewed items will show up here.</div>
+	</div>
+</section>
+
+<section id="favorites" ng-controller="FavoritesController">
+	<div class="title">★</div>
+	<hr>
+	<div id="favorites-results">
+		<div favorite-item ng-repeat="item in favorites track by $index"></div>
+		<div ng-show="favorites.length < 1" id="empty-favorites-message">Click the star on an item page to add it to this column.</div>
 	</div>
 </section>

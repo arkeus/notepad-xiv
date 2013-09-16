@@ -1,4 +1,4 @@
-app.controller("SearchController", ["$scope", function($scope) {
+app.controller("SearchController", ["$scope", "Notepad", function($scope, Notepad) {
 	$scope.search = null;
 	$scope.items = [];
 	
@@ -13,5 +13,12 @@ app.controller("SearchController", ["$scope", function($scope) {
 		$scope.$apply(function() {
 			$scope.search = string;
 		});
+	});
+	
+	$("#search-form").submit(function(e) {
+		e.preventDefault();
+		if ($scope.items != null && $scope.items.length > 0) {
+			Notepad.selectItem($scope.items[0]);
+		}
 	});
 }]);

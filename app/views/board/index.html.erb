@@ -1,4 +1,6 @@
 <section id="welcome">
+	<% if flash[:error] %><p class="error"><%= flash[:error] %></p><% end %>
 	<p>Notepad XIV is a simple application that allows you to log prices for items, along with viewing a history of prices that you've logged in order to track trends in the market.</p>
-	<p>To begin, load a board using the form in the upper right. If a board under that name doesn't exist, one will be created.</p>
+	<p class="highlighted">To begin, load a board using the form in the upper right. If a board under that name doesn't exist, one will be created.</p>
+	<p>Notepad XIV was built for user-specific boards, but all prices are stored in the backend so you can share boards between friends. Some data, such as recent searches and favorites are local to your computer though.</p>
 </section>

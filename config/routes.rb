@@ -1,5 +1,5 @@
 Notepadxiv::Application.routes.draw do
-	root "board#index"
+	root "board#index", as: "root"
 	post "/load" => "board#load", as: "board_load"
 	
 	get "/:board" => "notepad#index", as: "board_index"
