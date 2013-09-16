@@ -106,7 +106,7 @@ footer {
 	input[type="text"] {
 		background: #222;
 		border: 1px solid #444;
-		padding: 2px 8px;
+		padding: 4px 8px;
 		width: 100%;
 		color: #eee;
 		box-shadow: inset 1px 1px 0 #000;
@@ -306,9 +306,10 @@ footer {
 	
 	margin-bottom: 8px;
 	box-shadow: 0 0 5px #222;
-	padding: 6px;
+	padding: 2px 4px 2px 2px;
 	border: 1px solid transparent;
 	transition: all 0.2s ease-out;
+	line-height: 18px;
 	
 	&:hover {
 		box-shadow: 0 0 5px #000;
@@ -324,28 +325,26 @@ footer {
 	.name {
 		float: left;
 		font-size: 10px;
-		line-height: 14px;
 		font-weight: bold;
 	}
 	
 	.date {
 		float: right;
 		color: #777;
-		line-height: 14px;
 	}
 		
 	.price {
 		float: right;
 		width: 70px;
 		text-align: right;
-		line-height: 14px;
 	}
 		
 	.item-image {
-		width: 14px;
-		height: 14px;
+		width: 18px;
+		height: 18px;
 		vertical-align: middle;
-		margin-right: 4px;
+		margin-right: 6px;
+		float: left;
 	}
 	
 	.hq-price-icon {
@@ -358,41 +357,16 @@ footer {
 		color: #555;
 		padding: 0 4px;
 	}
-	
-	.info {
-		color: #666;
-		
-		.link {
-			float: right;
-			color: #444;
-			
-			&:hover {
-				color: #aaa;
-			}
-		}
-		
-		.level {
-			color: #888;
-			
-			em {
-				font-style: normal;
-				color: #ddd;
-			}
-		}
-		
-		.type {
-			color: #999;
-		}
-	}
 }
 
 .recent-item {
 	margin-bottom: 8px;
 	box-shadow: 0 0 5px #222;
-	padding: 6px;
+	padding: 2px 4px 2px 2px;
 	border: 1px solid transparent;
 	transition: all 0.2s ease-out;
 	white-space: nowrap;
+	line-height: 18px;
 	
 	&:hover {
 		box-shadow: 0 0 5px #000;
@@ -408,7 +382,6 @@ footer {
 	.name {
 		font-size: 10px;
 		font-weight: bold;
-		line-height: 12px;
 		
 		.price {
 			float: right;
@@ -416,10 +389,10 @@ footer {
 	}
 		
 	.item-image {
-		width: 12px;
-		height: 12px;
+		width: 18px;
+		height: 18px;
 		vertical-align: middle;
-		margin-right: 4px;
+		margin-right: 6px;
 	}
 	
 	.hq-price-icon {
@@ -439,6 +412,7 @@ footer {
 	margin: 0px;
 	padding: 0px;
 	float: left;
+	line-height: 18px;
 	
 	&:nth-child(even) {
 		padding-left: 8px;
@@ -447,12 +421,11 @@ footer {
 	.favorite-item {
 		margin-bottom: 8px;
 		box-shadow: 0 0 5px #222;
-		padding: 6px;
+		padding: 2px 4px 2px 2px;
 		border: 1px solid transparent;
 		transition: all 0.2s ease-out;
 		font-size: 10px;
 		font-weight: bold;
-		line-height: 12px;
 		float: left;
 		width: 100%;
 		white-space: nowrap;
@@ -473,10 +446,10 @@ footer {
 		}
 		
 		.item-image {
-			width: 12px;
-			height: 12px;
+			width: 18px;
+			height: 18px;
 			vertical-align: middle;
-			margin-right: 4px;
+			margin-right: 6px;
 		}
 		
 		.hq-price-icon {
@@ -507,7 +480,7 @@ button, input[type="submit"] {
 	background: #444;
 	font-size: 10px;
 	line-height: 10px;
-	padding: 2px 8px;
+	padding: 4px 8px;
 	box-shadow: inset 0 0 1px #fff;
 	vertical-align: top;
 	color: #ccc;

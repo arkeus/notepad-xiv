@@ -173,7 +173,8 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 			
 		}],
 		template: "<div class='note tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
-			<div class='name rarity-{{item.r}}'><img ng-src='images/items/{{item.i}}.png' class='item-image'> {{item.n}}</div>\
+			<img ng-src='images/items/{{item.i}}.png' class='item-image'>\
+			<div class='name rarity-{{item.r}}'>{{item.n}}</div>\
 			<div class='price gil'><img src='images/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
 			<div class='date'>{{note.created_at | shortDate}}</div>\
 		</div>",
