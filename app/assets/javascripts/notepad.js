@@ -152,7 +152,7 @@ app.directive("itemResult", ["Notepad", function(Notepad) {
 			
 		}],
 		template: "<div class='item-result tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
-			<div class='image'><img ng-src='assets/items/{{item.i}}.png'></div>\
+			<div class='image'><img ng-src='images/items/{{item.i}}.png'></div>\
 			<div class='name rarity-{{item.r}}'><span class='price gil' ng-show='item.p'>{{item.p}}<em>G</em></span>{{item.n}}</div>\
 			<div class='info'><a class='link' href='http://xivdb.com/{{item.u}}' target='_new'>XIVDB</a>\
 			<span class='level'>Lv<em>{{item.l}}</em></span> | <span class='type'>{{item.t}}</span></div>\
@@ -173,8 +173,8 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 			
 		}],
 		template: "<div class='note tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
-			<div class='name rarity-{{item.r}}'><img ng-src='assets/items/{{item.i}}.png' class='item-image'> {{item.n}}</div>\
-			<div class='price gil'><img src='assets/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
+			<div class='name rarity-{{item.r}}'><img ng-src='images/items/{{item.i}}.png' class='item-image'> {{item.n}}</div>\
+			<div class='price gil'><img src='images/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
 			<div class='date'>{{note.created_at}}</div>\
 		</div>",
 		replace: true,
@@ -200,8 +200,8 @@ app.directive("recentItem", ["Notepad", function(Notepad) {
 			
 		}],
 		template: "<div class='recent-item tooltip' data-xivdb='http://xivdb.com/{{item.u}}'><div class='name rarity-{{item.r}}'>\
-			<span class='price gil'><span ng-show='item.p'>{{item.p}}<em>G</em></span><strong ng-show='item.p && item.hqp'>|</strong><span ng-show='item.hqp'><img src='assets/hq.png' class='hq-price-icon'>{{item.hqp}}<em>G</em></span></span>\
-			<img ng-src='assets/items/{{item.i}}.png' class='item-image'> {{item.n}}\
+			<span class='price gil'><span ng-show='item.p'>{{item.p}}<em>G</em></span><strong ng-show='item.p && item.hqp'>|</strong><span ng-show='item.hqp'><img src='images/hq.png' class='hq-price-icon'>{{item.hqp}}<em>G</em></span></span>\
+			<img ng-src='images/items/{{item.i}}.png' class='item-image'> {{item.n}}\
 		</div></div>",
 		replace: true,
 		link: function(scope, element, attrs) {
@@ -219,8 +219,8 @@ app.directive("favoriteItem", ["Notepad", function(Notepad) {
 			
 		}],
 		template: "<div class='favorite-container'><div class='favorite-item tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
-			<span class='price gil'><span ng-show='item.p'>{{item.p}}<em>G</em></span><strong ng-show='item.p && item.hqp'>|</strong><span ng-show='item.hqp'><img src='assets/hq.png' class='hq-price-icon'>{{item.hqp}}<em>G</em></span></span>\
-			<img ng-src='assets/items/{{item.i}}.png' class='item-image'>\
+			<span class='price gil'><span ng-show='item.p'>{{item.p}}<em>G</em></span><strong ng-show='item.p && item.hqp'>|</strong><span ng-show='item.hqp'><img src='images/hq.png' class='hq-price-icon'>{{item.hqp}}<em>G</em></span></span>\
+			<img ng-src='images/items/{{item.i}}.png' class='item-image'>\
 		</div></div>",
 		replace: true,
 		link: function(scope, element, attrs) {

@@ -29,7 +29,7 @@ class XivdbScraper
 				image_relative_path = container.css("img").first['src']
 				if image_relative_path
 					image_path = "http://xivdb.com/#{image_relative_path}"
-					target_path = Rails.root.join("app/assets/images/items/#{id}.png")
+					target_path = Rails.root.join("public/images/items/#{id}.png")
 					if File.exists?(target_path)
 						puts "Skipping image #{image_path}"
 					else
