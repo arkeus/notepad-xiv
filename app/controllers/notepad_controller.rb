@@ -9,7 +9,7 @@ class NotepadController < ApplicationController
 	# /:board/add/:item
 	def add
 		raise "You must supply an item" unless params[:item]
-		note = Note.create(board_id: @board.id, item: params[:item], price: params[:price])
+		note = Note.create(board_id: @board.id, item: params[:item], price: params[:price], hq: params[:hq])
 		render json: note
 	end
 	
@@ -23,13 +23,13 @@ class NotepadController < ApplicationController
 	# /:board/list/:item
 	def list
 		raise "You must supply an item" unless params[:item]
-		notes = @board.notes.where(item: params[:item]).select("id, hq, price, item").order("id desc")
+		notes = @board.notes.where(item: params[:item]).select("id, hq, price, item, created_at").order("id desc")
 		render json: notes
 	end
 	
 	# /:board/recent
 	def recent
-		notes = @board.notes.order("id desc").limit(19)
+		notes = @board.notes.order("id desc").limit(17)
 		render json: notes
 	end
 	
