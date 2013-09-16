@@ -10,8 +10,6 @@ body {
 	overflow-y: scroll;
 	color: #bbb;
 	padding-bottom: 20px;
-	font-size: 12px;
-	font-family: Verdana, Geneva, sans-serif;
 	
 	a {
 		text-decoration: none;
@@ -22,17 +20,22 @@ body {
 	}
 }
 
+body, input, button, textarea {
+	font-size: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
 header {
 	background: #000;
 	border-bottom: 1px solid #555;
-	padding: 10px 8px 4px 12px;
+	padding: 6px 8px 4px 12px;
 	
 	#brand {
 		font-family: 'Cinzel Decorative', cursive;
 		font-weight: bold;
 		text-shadow: -1px -1px 0 #ddd, 2px 2px 0 #000;
-		font-size: 28px;
-		line-height: 28px;
+		font-size: 16px;
+		line-height: 16px;
 		cursor: pointer;
 		
 		&:hover {
@@ -50,11 +53,11 @@ header {
 		input[type="text"] {
 			background: #222;
 			border: 1px solid #333;
-			padding: 4px;
+			padding: 2px 4px;
 			color: #eee;
 			box-shadow: inset 1px 1px 0 #000;
-			margin-bottom: 8px;
 			width: 200px;
+			font-size: 10px;
 			
 			&:focus {
 				outline: none;
@@ -65,19 +68,19 @@ header {
 		input[type="submit"] {
 			background: #222;
 			border: 1px solid #333;
-			padding: 4px 12px;
+			border-bottom-width: 2px;
+			padding: 2px 8px;
 			color: #aaa;
 			box-shadow: inset -1px -1px 0 #000;
-			margin-bottom: 8px;
 			text-shadow: -1px -1px 0 #000;
+			font-size: 10px;
 			
 			&:hover {
 				background: #666;
 			}
 			
 			&:active {
-				padding-top: 7px;
-				border-bottom-width: 2px;
+				border-bottom-width: 1px;
 				position: relative;
 				top: 1px;
 			}
@@ -92,18 +95,18 @@ footer {
 	background: #444;
 	border-top: 1px solid #111;
 	padding: 4px;
-	font-size: 10px;
+	font-size: 9px;
 	text-align: center;
 	color: #777;
 }
 
 #main {
-	padding: 8px;
+	padding: 6px 8px;
 	
 	input[type="text"] {
 		background: #222;
 		border: 1px solid #444;
-		padding: 8px;
+		padding: 2px 8px;
 		width: 100%;
 		color: #eee;
 		box-shadow: inset 1px 1px 0 #000;
@@ -116,7 +119,7 @@ footer {
 	}
 		
 	.title {
-		font-size: 24px;
+		font-size: 14px;
 		font-weight: bold;
 		text-align: center;
 		font-family: 'Cinzel Decorative', cursive;
@@ -145,7 +148,7 @@ footer {
 				}
 				
 				.name, .gil {
-					font-size: 24px;
+					font-size: 14px;
 					font-family: 'Cinzel Decorative', cursive;
 					text-shadow: 0 0 5px #000;
 				}
@@ -170,12 +173,12 @@ footer {
 				
 				.left-actions {
 					float: left;
-					width: 49.99%;
+					width: 69.99%;
 				}
 				
 				.right-actions {
 					float: right;
-					width: 49.99%;
+					width: 29.99%;
 				}
 				
 				.action-button {
@@ -256,15 +259,15 @@ footer {
 		margin-right: 8px;
 		
 		img {
-			width: 36px;
-			height: 36px;
+			width: 24px;
+			height: 24px;
 		}
 	}
 	
 	.name {
-		font-size: 14px;
+		font-size: 10px;
 		font-weight: bold;
-		line-height: 20px;
+		line-height: 12px;
 		
 		.price {
 			float: right;
@@ -320,34 +323,34 @@ footer {
 	
 	.name {
 		float: left;
-		font-size: 14px;
-		line-height: 20px;
+		font-size: 10px;
+		line-height: 14px;
 		font-weight: bold;
 	}
 	
 	.date {
 		float: right;
 		color: #777;
-		line-height: 20px;
+		line-height: 14px;
 	}
 		
 	.price {
 		float: right;
-		width: 100px;
+		width: 70px;
 		text-align: right;
-		line-height: 20px;
+		line-height: 14px;
 	}
 		
 	.item-image {
-		width: 18px;
-		height: 18px;
+		width: 14px;
+		height: 14px;
 		vertical-align: middle;
 		margin-right: 4px;
 	}
 	
 	.hq-price-icon {
-		width: 12px;
-		height: 12px;
+		width: 14px;
+		height: 14px;
 		vertical-align: middle;
 	}
 	
@@ -403,9 +406,9 @@ footer {
 	}
 	
 	.name {
-		font-size: 14px;
+		font-size: 10px;
 		font-weight: bold;
-		line-height: 20px;
+		line-height: 12px;
 		
 		.price {
 			float: right;
@@ -413,8 +416,8 @@ footer {
 	}
 		
 	.item-image {
-		width: 18px;
-		height: 18px;
+		width: 12px;
+		height: 12px;
 		vertical-align: middle;
 		margin-right: 4px;
 	}
@@ -447,9 +450,9 @@ footer {
 		padding: 6px;
 		border: 1px solid transparent;
 		transition: all 0.2s ease-out;
-		font-size: 14px;
+		font-size: 10px;
 		font-weight: bold;
-		line-height: 20px;
+		line-height: 12px;
 		float: left;
 		width: 100%;
 		white-space: nowrap;
@@ -470,8 +473,8 @@ footer {
 		}
 		
 		.item-image {
-			width: 18px;
-			height: 18px;
+			width: 12px;
+			height: 12px;
 			vertical-align: middle;
 			margin-right: 4px;
 		}
@@ -502,9 +505,9 @@ button, input[type="submit"] {
 	border: 1px solid #000;
 	border-bottom-width: 3px;
 	background: #444;
-	font-size: 14px;
-	line-height: 14px;
-	padding: 7px 16px 7px 16px;
+	font-size: 10px;
+	line-height: 10px;
+	padding: 2px 8px;
 	box-shadow: inset 0 0 1px #fff;
 	vertical-align: top;
 	color: #ccc;
@@ -515,7 +518,6 @@ button, input[type="submit"] {
 	}
 	
 	&:active {
-		padding-top: 7px;
 		border-bottom-width: 2px;
 		position: relative;
 		top: 1px;

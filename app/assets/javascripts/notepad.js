@@ -175,7 +175,7 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 		template: "<div class='note tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
 			<div class='name rarity-{{item.r}}'><img ng-src='images/items/{{item.i}}.png' class='item-image'> {{item.n}}</div>\
 			<div class='price gil'><img src='images/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
-			<div class='date'>{{note.created_at}}</div>\
+			<div class='date'>{{note.created_at | shortDate}}</div>\
 		</div>",
 		replace: true,
 		link: function(scope, element, attrs) {
@@ -230,3 +230,14 @@ app.directive("favoriteItem", ["Notepad", function(Notepad) {
 		}
 	};
 }]);
+
+//
+// FILTERS
+//
+
+app.filter("shortDate", function() {
+	return function(date) {
+		var date = new Date(date);
+		return (date.getMonth() + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
+	};
+});
