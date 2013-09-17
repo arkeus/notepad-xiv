@@ -27,6 +27,9 @@ app.factory("Notepad", ["$rootScope", function($rootScope) {
 	
 	module.selectItem = function(item) {
 		$rootScope.$broadcast("select-item", item);
+		setTimeout(function() {
+			$("#price").focus();
+		}, 10);
 	};
 	
 	module.removeNote = function(note) {
@@ -74,6 +77,7 @@ app.factory("Favoriter", ["$rootScope", "Pricer", function($rootScope, Pricer) {
 		}
 		
 		favorite.p = Pricer.getPrice(favorite);
+		favorite.hqp = Pricer.getPrice(favorite, true);
 		module.favorites.unshift(favorite);
 		save();
 	};
@@ -154,7 +158,7 @@ app.directive("itemResult", ["Notepad", function(Notepad) {
 		template: "<div class='item-result tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
 			<div class='image'><img ng-src='images/items/{{item.i}}.png'></div>\
 			<div class='name rarity-{{item.r}}'><span class='price gil' ng-show='item.p'>{{item.p}}<em>G</em></span>{{item.n}}</div>\
-			<div class='info'><a class='link' href='http://xivdb.com/{{item.u}}' target='_new'>XIVDB</a>\
+			<div class='info'><a class='link' href='http://xivdb.com/{{item.u}}' target='_new' tabindex='-1'>XIVDB</a>\
 			<span class='level'>Lv<em>{{item.l}}</em></span> | <span class='type'>{{item.t}}</span></div>\
 		</div>",
 		replace: true,
@@ -174,6 +178,29 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 		}],
 		template: "<div class='note tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
 			<img ng-src='images/items/{{item.i}}.png' class='item-image'>\
+			<div class='price gil'><img src='images/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
+			<div class='date'>{{note.created_at | shortDate}}</div>\
+		</div>",
+		replace: true,
+		link: function(scope, element, attrs) {
+			scope.item = ItemIndex.get(scope.note.item);
+			$(element).click(function() {
+				if (confirm("Delete price " + scope.note.price + " for " + scope.item.n + "?")) {
+					Notepad.removeNote(scope.note.id);
+				}
+			});
+		}
+	};
+}]);
+
+app.directive("recentNote", ["$http", "Notepad", function($http, Notepad) {
+	return {
+		restrict: "A",
+		controller: ["$scope", "$element", "$attrs", function($scope, $element, $attrs) {
+			
+		}],
+		template: "<div class='recent-note tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
+			<img ng-src='images/items/{{item.i}}.png' class='item-image'>\
 			<div class='name rarity-{{item.r}}'>{{item.n}}</div>\
 			<div class='price gil'><img src='images/hq.png' ng-show='{{note.hq}}' class='hq-price-icon'>{{note.price}}<em>G</em></div>\
 			<div class='date'>{{note.created_at | shortDate}}</div>\
@@ -182,13 +209,7 @@ app.directive("note", ["$http", "Notepad", function($http, Notepad) {
 		link: function(scope, element, attrs) {
 			scope.item = ItemIndex.get(scope.note.item);
 			$(element).click(function() {
-				if (attrs['delete']) {
-					if (confirm("Delete price " + scope.note.price + " for " + scope.item.n + "?")) {
-						Notepad.removeNote(scope.note.id);
-					}
-				} else {
-					Notepad.selectItem(scope.item);
-				}
+				Notepad.selectItem(scope.item);
 			});
 		}
 	};

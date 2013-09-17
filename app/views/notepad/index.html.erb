@@ -13,37 +13,46 @@
 	<div ng-show="item == null" id="recent-notes">
 		<div class="title">Recently Added Prices</div>
 		<hr>
-		<div note ng-repeat="note in recentNotes"></div>
+		<div recent-note ng-repeat="note in recentNotes"></div>
 	</div>
 	<div ng-show="item != null" id="item-notes">
 		<div id="item-notes-title">
-			<div class="price">
-				<span class="gil" ng-show="hq && hqprice"><img src='images/hq.png'>{{hqprice}}<em>g</em></span>
-				<span class="gil" ng-show="!hq && price">{{price}}<em>g</em></span>
-			</div>
-			<span class="rarity-{{item.r}} name">{{item.n}}</span>
+			<button id="favorite-button" class="action-button" ng-click="toggleFavorite()" tabindex="-1">
+				<span ng-show="favorite">Remove Favorite</span>
+				<span ng-show="!favorite">Add Favorite</span>
+			</button>
+			<img ng-repeat="item in (item ? [item] : null)" ng-src="images/items/{{item.i}}.png" class="item-image"><span class="rarity-{{item.r}} name">{{item.n}}</span>
 		</div>
 		<hr>
-		<div class="actions">
-			<div class="left-actions">
-				<button id="quality-button" class="action-button" ng-click="toggleQuality()">
-					<span ng-show="hq"><%= image_tag "hq.png", id: "hq" %> High Quality</span>
-					<span ng-show="!hq">Normal Quality</span>
-				</button>
-				<button id="favorite-button" class="action-button" ng-click="toggleFavorite()">
-					<span ng-show="favorite">★ Favorite</span>
-					<span ng-show="!favorite">★ Not Favorite</span>
-				</button>
-			</div>
-			<div class="right-actions">
+		<div id="note-columns">
+			<div id="normal-quality-column">
+				<div class="subtitle">
+					<div class="price"><span class="gil" ng-show="price">{{price}}<em>G</em></span></div>
+					<span class="name">Normal Quality</span>
+				</div>
+				<hr>
 				<%= form_tag nil, id: "add-price-form" do %>
-					<%= text_field_tag "price", nil, placeholder: "Add Price", "ng-Pattern" => "/\d*/" %>
+					<%= text_field_tag "price", nil, placeholder: "Add NQ Price", "ng-Pattern" => "/\d*/" %>
 				<% end %>
+				<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: false } | orderBy:'id':'reverse' | limitTo:'25'"></div>
+				<div ng-show="(notes | filter:{ hq: false}).length == 0" class="empty-prices-message">
+					No <strong>Normal Quality</strong> Prices Found
+				</div>
 			</div>
-		</div>
-		<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: hq } | orderBy:'id':'reverse' | limitTo:'25'"></div>
-		<div ng-show="(notes | filter:{ hq: hq }).length == 0" id="empty-prices-message">
-			No prices have been entered for this item for <strong ng-show="hq">High Quality</strong><strong ng-show="!hq">Normal Quality</strong>.
+			<div id="high-quality-column">
+				<div class="subtitle">
+					<div class="price"><span class="gil" ng-show="hqprice"><img src='images/hq.png'>{{hqprice}}<em>G</em></span></div>
+					<span class="name">High Quality</span>
+				</div>
+				<hr>
+				<%= form_tag nil, id: "add-hqprice-form" do %>
+					<%= text_field_tag "hqprice", nil, placeholder: "Add HQ Price", "ng-Pattern" => "/\d*/" %>
+				<% end %>
+				<div note data-delete="true" ng-repeat="note in notes | filter:{ hq: true } | orderBy:'id':'reverse' | limitTo:'25'"></div>
+				<div ng-show="(notes | filter:{ hq: true}).length == 0" class="empty-prices-message">
+					No <strong>High Quality</strong> Prices Found
+				</div>
+			</div>
 		</div>
 	</div>
 	<div ng-show="item == null && recentNotes.length == 0" id="empty-notes-message">
@@ -61,7 +70,7 @@
 </section>
 
 <section id="favorites" ng-controller="FavoritesController">
-	<div class="title">★</div>
+	<div class="title">Favorites</div>
 	<hr>
 	<div id="favorites-results">
 		<div favorite-item ng-repeat="item in favorites track by $index"></div>

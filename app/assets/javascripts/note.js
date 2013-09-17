@@ -1,6 +1,5 @@
 app.controller("NoteController", ["$scope", "$http", "Notepad", "Note", "Pricer", "Favoriter", function($scope, $http, Notepad, Note, Pricer, Favoriter) {
 	$scope.item = null;
-	$scope.hq = false;
 	$scope.favorite = false;
 	$scope.price = null;
 	$scope.hqprice = null;
@@ -73,17 +72,18 @@ app.controller("NoteController", ["$scope", "$http", "Notepad", "Note", "Pricer"
 		return false;
 	};
 	
-	$("#add-price-form").submit(function(e) {
+	$("#add-price-form, #add-hqprice-form").submit(function(e) {
 		e.preventDefault();
-		var field = $(this).find("#price");
+		var field = $(this).find("input[type='text']");
 		var price = field.val();
 		var integerPrice = parseInt(price);
+		var hq = $(this).attr("id") == "add-hqprice-form";
 		if (price != integerPrice) {
 			return;
 		}
 		field.val("");
 		$scope.$apply(function() {
-			$http.post("/" + board + "/add/" + $scope.item.n, { price: price, hq: $scope.hq }).success(function(data, status) {
+			$http.post("/" + board + "/add/" + $scope.item.n, { price: price, hq: hq }).success(function(data, status) {
 				$scope.notes.push(data);
 				updatePrices();
 			});

@@ -1,9 +1,15 @@
 class NotepadController < ApplicationController
-	before_filter :initialize_board
+	before_filter :initialize_board, except: [:index]
 	around_filter :ajax_request, except: [:index]
 	
 	def index
+		raise "You must supply a board" unless params[:board]
+		Board.validate_name(params[:board])
+		@board = Board.where(name: params[:board]).first!
 		@recent_notes = @board.notes.order("id desc").limit(20)
+	rescue => e
+		flash[:error] = e.message
+		redirect_to root_path and return
 	end
 	
 	# /:board/add/:item
