@@ -8,7 +8,10 @@ app.controller("TimeController", ["$scope", function($scope) {
 	
 	$scope.update = function() {
 		var difference = (+new Date) - EORZOROCH;
-		$scope.date.setTime(EORZOROCH_DATE.getTime() + EORZEA_SCALE * difference);
+		var oldTime = $scope.date.getTime();
+		var newTime = EORZOROCH_DATE.getTime() + EORZEA_SCALE * difference;
+		$scope.date.setTime(newTime);
+		$scope.$broadcast("set-time", oldTime, newTime);
 	};
 	
 	$scope.$on("initialize", $scope.update);
