@@ -4,7 +4,7 @@ app.controller("TimeController", ["$scope", function($scope) {
 	var EORZOROCH_DATE = new Date("2000-01-01 19:30:00");
 	var EORZEA_SCALE = 3600 / 175; // 2 minutes 55 seconds per 1 second real time
 	
-	$scope.date = new Date;
+	$scope.date = new Date("1000-01-01 00:00:00");
 	
 	$scope.update = function() {
 		var difference = (+new Date) - EORZOROCH;
@@ -33,6 +33,10 @@ app.filter("timeIconFilter", ["$sce", function($sce) {
 
 app.filter("timeFilter", function() {
 	return function(date) {
+		if (date.getFullYear() < 2000) {
+			return "Loading...";
+		}
+		
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
 		var ampm = "am";
