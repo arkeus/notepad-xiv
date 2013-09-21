@@ -517,6 +517,7 @@ footer {
 		float: left;
 		width: 100%;
 		white-space: nowrap;
+		overflow: hidden;
 		
 		&:hover {
 			box-shadow: 0 0 5px #000;
@@ -531,6 +532,7 @@ footer {
 		
 		.price {
 			float: right;
+			text-shadow: 0 0 5px #000;
 		}
 		
 		.item-image {
@@ -549,6 +551,10 @@ footer {
 		strong {
 			color: #555;
 			padding: 0 4px;
+		}
+		
+		.name {
+			opacity: 0.1;
 		}
 	}
 }

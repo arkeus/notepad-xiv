@@ -240,9 +240,9 @@ app.directive("favoriteItem", ["Notepad", function(Notepad) {
 		controller: ["$scope", "$element", "$attrs", function($scope, $element, $attrs) {
 			
 		}],
-		template: "<div class='favorite-container'><div class='favorite-item tooltip' data-xivdb='http://xivdb.com/{{item.u}}'>\
+		template: "<div class='favorite-container'><div class='favorite-item tooltip rarity-{{item.r}}' data-xivdb='http://xivdb.com/{{item.u}}'>\
 			<span class='price gil'><span ng-show='item.p'>{{item.p}}<em>G</em></span><strong ng-show='item.p && item.hqp'>|</strong><span ng-show='item.hqp'><img src='images/hq.png' class='hq-price-icon'>{{item.hqp}}<em>G</em></span></span>\
-			<img ng-src='images/items/{{item.i}}.png' class='item-image'>\
+			<img ng-src='images/items/{{item.i}}.png' class='item-image'> <span class='name'>{{item.n.substr(0, 10)}}</span>\
 		</div></div>",
 		replace: true,
 		link: function(scope, element, attrs) {
