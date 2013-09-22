@@ -4,7 +4,7 @@ var app = angular.module("nixv", ["ngResource", "ngSanitize"]);
 // APPLICATION
 //
 
-app.run(["$rootScope", function($rootScope) {
+app.run(["$rootScope", "Notifier", function($rootScope, Notifier) {
 	setTimeout(function() {
 		$rootScope.$broadcast("initialize");
 	}, 50);

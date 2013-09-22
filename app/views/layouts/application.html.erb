@@ -16,6 +16,9 @@
 		<span id="brand"><strong class="rarity-2">N</strong>otepad <strong class="rarity-3">X</strong><strong class="rarity-4">I</strong><strong class="rarity-7">V</strong></span>
 	</header>
 	<section id="main" ng-cloak class="cf"><%= yield %></section>
+	<section id="notifications" ng-cloak ng-controller="NotificationsController">
+		<div notification ng-repeat="notification in notifications"></div>
+	</section>
 	<footer ng-controller="TimeController">
 		<div id="time"><span id="time-icon" ng-bind-html="date | timeIconFilter"></span>{{date | timeFilter}}</div>
 	</footer>
