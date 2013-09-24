@@ -6,8 +6,8 @@ var gatheringNodes = {
 		{ type: "q", time: "13:00", item: "Grade 4 Carbonized Matter", zone: "Mor Dhona", area: "Saint Coinach's Find/Singing Shards" },
 		{ type: "q", time: "17:00", item: "Volcanic Rock Salt", zone: "Eastern La Noscea", area: "Raincatcher Gully" },
 		{ type: "q", time: "17:00", item: "Grade 4 Carbonized Matter", zone: "Mor Dhona", area: "Saint Coinach's Find/Singing Shards" },
-		{ type: "q", time: "21:00", item: "Astral Rock", zone: "Coerthas Central Highlands", area: "Skyfire Locks/Dragonhead" },
 		{ type: "q", time: "21:00", item: "Grade 4 Carbonized Matter", zone: "Mor Dhona", area: "Saint Coinach's Find/Singing Shards" },
+		{ type: "q", time: "22:00", item: "Astral Rock", zone: "Coerthas Central Highlands", area: "Skyfire Locks/Dragonhead" },
 	],
 	botany: [
 		{ type: "h", time: "1:00", item: "Crawler Cocoons", zone: "Eastern Shroud", area: "Little Solace" },
@@ -15,10 +15,13 @@ var gatheringNodes = {
 		{ type: "h", time: "5:00", item: "Trillium", zone: "Eastern Shroud", area: "" },
 		{ type: "h", time: "5:00", item: "Honey Lemon", zone: "Eastern La Noscea", area: "Gullperch Tower" },
 		{ type: "l", time: "5:00", item: "Grade 4 Carbonized Matter", zone: "Mor Dhona", area: "" },
+		{ type: "l", time: "6:00", item: "Honey Lemon", zone: "Eastern La Noscea", area: "Costa Del Sol" },
 		{ type: "l", time: "9:00", item: "Spruce Log", zone: "Coerthas Central Highlands", area: "The Ogre's Belly" },
 		{ type: "h", time: "9:00", item: "Prickly Pineapple", zone: "Eastern La Noscea", area: "Costa Del Sol/Hidden Falls" },
 		{ type: "l", time: "9:00", item: "Grade 4 Carbonized Matter", zone: "Mor Dhona", area: "" },
 		{ type: "l", time: "13:00", item: "Vampire Plant", zone: "Coerthas Central Highlands", area: "Skyfire Locks/Dragonhead" },
+		{ type: "l", time: "13:00", item: "Dzemael Tomato", zone: "Eastern La Noscea", area: "Wineport" },
+		{ type: "l", time: "13:00", item: "Black Truffle", zone: "Eastern Thanalan", area: "Drybone" },
 		{ type: "l", time: "17:00", item: "Thavnairian Mistletoe", zone: "Coerthas Central Highlands", area: "Stone Vigil/Whitebrim Front" },
 		{ type: "h", time: "21:00", item: "Kidragora & Trillium Bulb", zone: "Eastern Shroud", area: "The Honey Yard/The Bramble Patch" },
 	]
