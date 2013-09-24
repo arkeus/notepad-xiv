@@ -1,20 +1,24 @@
 // 1379653013050 = 7:30pm
-app.controller("TimeController", ["$scope", function($scope) {
+app.controller("TimeController", ["$rootScope", "$scope", function($rootScope, $scope) {
 	var EORZOROCH = 1379653013050;
 	var EORZOROCH_DATE = new Date("2000-01-01 19:30:00");
 	var EORZEA_SCALE = 3600 / 175; // 2 minutes 55 seconds per 1 second real time
 	
 	$scope.date = new Date("1000-01-01 00:00:00");
 	
-	$scope.update = function() {
+	$scope.update = function(broadcast) {
+		broadcast = typeof broadcast === "undefined" ? true : broadcast;
 		var difference = (+new Date) - EORZOROCH;
 		var oldTime = $scope.date.getTime();
 		var newTime = EORZOROCH_DATE.getTime() + EORZEA_SCALE * difference;
 		$scope.date.setTime(newTime);
-		$scope.$broadcast("set-time", oldTime, newTime);
+		if (broadcast) {
+			console.info("Broadcasting", oldTime, newTime);
+			$rootScope.$broadcast("set-time", oldTime, newTime);
+		}
 	};
 	
-	$scope.$on("initialize", $scope.update);
+	$scope.$on("initialize", function() { $scope.update(false); });
 	
 	setInterval(function() {
 		$scope.$apply(function() {
